@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#4f46e5">
+  <title>筆墨思潮 WriteMaster - 階梯寫作訓練</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="header-top">
+      <div class="brand-title">
+        <span>✍️</span> 筆墨思潮 WriteMaster
+      </div>
+      <div class="streak-pill" id="btn-streak">
+        <span>🔥</span> <span id="streak-text">1天連續</span>
+      </div>
+    </div>
+    <div class="identity-bar">
+      <select id="select-identity" class="identity-select"></select>
+      <div class="identity-badge" id="badge-words">700~1000字</div>
+    </div>
+  </header>
+
+  <!-- Main Views (Tabs) -->
+  <main>
+    <!-- TAB 1: 寫作技法指南 -->
+    <section id="tab-guide" class="tab-content active">
+      <div class="card" style="background: linear-gradient(135deg, #4f46e5, #6366f1); color: #fff;">
+        <h2 style="font-size: 1.1rem; margin-bottom: 6px;">📖 分階寫作核心秘笈</h2>
+        <p style="font-size: 0.8rem; opacity: 0.9;">掌握審題、結構與感官摹寫，從零建立自信表達力！</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🔍 審題三步驟法則</div>
+        <div id="guide-steps-container"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🏛️ 起承轉合黃金四段骨架</div>
+        <div style="font-size: 0.84rem; color: var(--text-muted); line-height: 1.6;">
+          <p><strong>第一段【起】破題切入 (約15%)</strong>：開門見山或情境破題，牢牢抓住閱卷目光。</p>
+          <p style="margin-top: 6px;"><strong>第二段【承】深化鋪陳 (約35%)</strong>：具體事件交代，描摹真實細節與情感。</p>
+          <p style="margin-top: 6px;"><strong>第三段【轉】衝突波瀾 (約35%)</strong>：製造情節轉折、心態頓悟或觀點衝擊。</p>
+          <p style="margin-top: 6px;"><strong>第四段【合】總結昇華 (約15%)</strong>：首尾呼應，從小事提煉出人生哲理。</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">👁️ 五感觀察放大鏡</div>
+        <div id="guide-senses-container"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🚀 經典破題與收尾錦囊</div>
+        <div id="guide-openers-container"></div>
+      </div>
+    </section>
+
+    <!-- TAB 2: 歷年題庫庫 -->
+    <section id="tab-topics" class="tab-content">
+      <div class="card">
+        <div class="card-title">📚 歷年大考真題與精選庫</div>
+        <div class="card-subtitle">收錄 103~113 會考真題與國小各年級經典命題</div>
+        <select id="select-topic-cat" class="identity-select" style="width: 100%; margin-bottom: 10px;">
+          <option value="ALL">全部類別</option>
+          <option value="國中教育會考">國中教育會考</option>
+          <option value="國小經典題庫">國小經典題庫</option>
+          <option value="國小啟蒙練習">國小啟蒙練習</option>
+        </select>
+      </div>
+      <div id="topics-list-container"></div>
+    </section>
+
+    <!-- TAB 3: 階梯進步計畫 -->
+    <section id="tab-plans" class="tab-content">
+      <div class="card">
+        <div class="card-title">📅 階梯式刻意練習計畫</div>
+        <div class="card-subtitle">依循學習目標，從30天衝刺到365天全方位大師！</div>
+        <select id="select-plan-days" class="identity-select" style="width: 100%; margin-bottom: 12px;"></select>
+        
+        <div id="plan-detail-card" style="font-size: 0.85rem; line-height: 1.5; color: var(--text-main);">
+          <div id="plan-title" style="font-weight: 700; color: var(--primary); font-size: 1rem; margin-bottom: 4px;"></div>
+          <div id="plan-subtitle" style="color: var(--text-muted); margin-bottom: 10px;"></div>
+          <div id="plan-stages" style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px;"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 8px;">📝 每日示範任務 (打卡清單)</div>
+        <div id="plan-tasks-container"></div>
+      </div>
+    </section>
+
+    <!-- TAB 4: 時事新聞寫作 -->
+    <section id="tab-news" class="tab-content">
+      <div class="card">
+        <div class="card-title">📰 時事新聞同步思辨教學</div>
+        <div class="card-subtitle">由當前熱門議題延伸正反論辯，淬鍊時代觀點！</div>
+      </div>
+      <div id="news-list-container"></div>
+    </section>
+
+    <!-- TAB 5: 寫作沙盒與智能診斷 -->
+    <section id="tab-studio" class="tab-content">
+      <div class="card">
+        <div class="card-title" style="display: flex; justify-content: space-between; align-items: center;">
+          <span>✍️ 寫作沙盒</span>
+          <span id="char-counter" class="tag tag-primary">累積 0 字</span>
+        </div>
+        <div style="margin-top: 8px;">
+          <input type="text" id="studio-topic-input" class="identity-select" style="width: 100%; font-weight: 700; font-size: 0.95rem;" placeholder="請輸入文章題目...">
+        </div>
+      </div>
+
+      <!-- 分段引導寫作輸入框 -->
+      <div class="card">
+        <div class="textarea-group">
+          <label class="textarea-label">
+            <span>第一段【起】破題立意</span>
+            <span id="p1-count" class="tag">0字</span>
+          </label>
+          <textarea id="input-p1" class="writing-textarea" placeholder="開門見山或以情境破題，引出全文核心..."></textarea>
+        </div>
+
+        <div class="textarea-group">
+          <label class="textarea-label">
+            <span>第二段【承】深化鋪陳與細節</span>
+            <span id="p2-count" class="tag">0字</span>
+          </label>
+          <textarea id="input-p2" class="writing-textarea" placeholder="交代真實事件、具體情境，加入五感與動態..."></textarea>
+        </div>
+
+        <div class="textarea-group">
+          <label class="textarea-label">
+            <span>第三段【轉】情感衝突與轉折</span>
+            <span id="p3-count" class="tag">0字</span>
+          </label>
+          <textarea id="input-p3" class="writing-textarea" placeholder="描寫波瀾與轉折！挫折、誤會、心境頓悟..."></textarea>
+        </div>
+
+        <div class="textarea-group" style="margin-bottom: 0;">
+          <label class="textarea-label">
+            <span>第四段【合】總結昇華與哲思</span>
+            <span id="p4-count" class="tag">0字</span>
+          </label>
+          <textarea id="input-p4" class="writing-textarea" placeholder="首尾呼應，從小事提煉出人生哲思或前行勇氣..."></textarea>
+        </div>
+      </div>
+
+      <button id="btn-evaluate" class="btn btn-primary" style="margin-bottom: 14px;">
+        🚀 開始智能診斷與評閱報告
+      </button>
+
+      <!-- 診斷結果卡片 (預設隱藏) -->
+      <div id="eval-result-card" class="card" style="display: none;">
+        <div class="card-title">📊 專屬寫作評閱報告</div>
+        
+        <div style="display: flex; gap: 10px; margin-bottom: 12px;">
+          <div style="flex: 1; background: #eef2ff; padding: 10px; border-radius: 8px; text-align: center;">
+            <div style="font-size: 0.72rem; color: var(--primary);">預測大考級分</div>
+            <div id="res-grade" style="font-size: 1.05rem; font-weight: 800; color: var(--primary); margin-top: 2px;">-</div>
+          </div>
+          <div style="flex: 1; background: #f0fdf4; padding: 10px; border-radius: 8px; text-align: center;">
+            <div style="font-size: 0.72rem; color: #166534;">綜合得分</div>
+            <div id="res-score" style="font-size: 1.05rem; font-weight: 800; color: #16a34a; margin-top: 2px;">-</div>
+          </div>
+        </div>
+
+        <!-- HTML5 Canvas 五維雷達圖 -->
+        <div style="text-align: center; margin-bottom: 12px;">
+          <canvas id="radar-canvas" width="280" height="240" style="max-width: 100%;"></canvas>
+        </div>
+
+        <div id="res-details" style="font-size: 0.82rem; line-height: 1.6; margin-bottom: 12px;"></div>
+
+        <div style="background: #fffbeb; border: 1px solid #fde68a; padding: 12px; border-radius: 8px; margin-bottom: 12px;">
+          <div style="font-weight: 700; color: #b45309; font-size: 0.85rem; margin-bottom: 6px;">💡 升級改寫建議：</div>
+          <ul id="res-suggestions" style="padding-left: 18px; font-size: 0.8rem; color: #78350f; line-height: 1.5;"></ul>
+        </div>
+
+        <button id="btn-copy-essay" class="btn btn-outline">📋 複製全文與評閱成果</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom Navigation Bar -->
+  <nav class="bottom-nav">
+    <div class="nav-item active" data-tab="tab-guide">
+      <div class="nav-icon">📖</div>
+      <div>指引</div>
+    </div>
+    <div class="nav-item" data-tab="tab-topics">
+      <div class="nav-icon">📚</div>
+      <div>題庫</div>
+    </div>
+    <div class="nav-item" data-tab="tab-plans">
+      <div class="nav-icon">📅</div>
+      <div>計畫</div>
+    </div>
+    <div class="nav-item" data-tab="tab-news">
+      <div class="nav-icon">📰</div>
+      <div>時事</div>
+    </div>
+    <div class="nav-item" data-tab="tab-studio">
+      <div class="nav-icon">✍️</div>
+      <div>沙盒</div>
+    </div>
+  </nav>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast-msg"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/evaluator.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
