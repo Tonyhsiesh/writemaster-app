@@ -430,4 +430,28 @@ document.addEventListener("DOMContentLoaded", () => {
       toast.style.display = "none";
     }, 2500);
   }
+
+  // 12. PWA 安裝提示關閉與記錄
+  const pwaBanner = document.getElementById("pwa-install-banner");
+  const closeBanner = document.getElementById("close-banner");
+  if (closeBanner && pwaBanner) {
+    if (localStorage.getItem("wm_hide_pwa_banner") === "1") {
+      pwaBanner.style.display = "none";
+    }
+    closeBanner.addEventListener("click", () => {
+      pwaBanner.style.display = "none";
+      localStorage.setItem("wm_hide_pwa_banner", "1");
+    });
+  }
+
+  // 13. 註冊 Service Worker (離線快取支援)
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js').then((reg) => {
+        console.log('ServiceWorker registered:', reg.scope);
+      }).catch((err) => {
+        console.log('ServiceWorker registration failed:', err);
+      });
+    });
+  }
 });

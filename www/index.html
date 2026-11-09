@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="theme-color" content="#4f46e5">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="筆墨思潮">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="icon" type="image/png" href="icon-192.png">
   <title>筆墨思潮 WriteMaster - 階梯寫作訓練</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -27,6 +33,19 @@
 
   <!-- Main Views (Tabs) -->
   <main>
+    <!-- PWA Install Guide Banner -->
+    <div id="pwa-install-banner" class="card" style="background: #eef2ff; border: 1.5px dashed #4f46e5; margin-bottom: 12px;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-weight: 800; font-size: 0.88rem; color: #4f46e5;">📲 手機桌面 APP 安裝步驟</span>
+        <span id="close-banner" style="cursor: pointer; font-size: 1rem; color: #64748b; padding: 0 4px;">✕</span>
+      </div>
+      <div style="font-size: 0.8rem; color: #3730a3; margin-top: 6px; line-height: 1.5;">
+        • <strong>Android (Chrome)</strong>：點右上角 <strong>「⋮」選單 ➔ 選擇「加到主畫面」</strong> 或「安裝應用程式」。<br>
+        • <strong>iPhone (Safari)</strong>：點底部 <strong>「分享」按鈕 ➔ 選擇「加入主畫面」</strong>。<br>
+        即可在手機桌面生成專屬圖示，像原生 APP 一樣全螢幕極速運行！
+      </div>
+    </div>
+
     <!-- TAB 1: 寫作技法指南 -->
     <section id="tab-guide" class="tab-content active">
       <div class="card" style="background: linear-gradient(135deg, #4f46e5, #6366f1); color: #fff;">
